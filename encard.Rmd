@@ -1,0 +1,66 @@
+```{r}
+enCard <- Fig()
+enCard$ui() |>
+    browseTag2()
+```
+
+```{r}
+enCard$split_innerContent$`enCard-content-teacher-icon` <- tags$img(
+    class="icon-teacher",
+    src="lib/icon-1/img-teacher1.svg")
+
+enCard$split_innerContent$`enCard-content-teacher-triange` <- tags$img(
+    class="icon-tringle",
+    src="lib/icon-1/img-triangle.svg")
+
+enCard$split_innerContent$`enCard-background-icon-heart` <- tags$img(
+    class="icon-heart",
+    src="lib/icon-1/img-heart.svg")
+enCard$split_innerContent$`enCard-background-icon-sound` <- tags$img(
+    class="icon-sound",
+    src="lib/icon-1/img-sound.svg")
+
+enCard$split_innerContent$`enCard-content-word-title` = "trick"
+enCard$split_innerContent$`enCard-content-word-expl` = "adj. 虛弱的；欺詐的 \nn. 戲法；竅門；訣竅；把戲；特技"
+enCard$split_innerContent$`enCard-content-teacher-word` = "前往VoiceTube 聽 Leila 老師如何應用單字"
+enCard$split_innerContent$`enCard-content-lv-A2` = "A2 初級"
+
+enCard$update_div()
+enCard$ui() |> browseTag2()
+```
+
+```{r}
+enCard$split_css$`enCard-content-word-title`$remain$border <- NULL
+enCard$split_css$`enCard-content-word-expl`$remain$`white-space` <- "pre-wrap"
+enCard$split_css$`enCard-content-word-title`$remain$`font-weight` <- "bold"
+enCard$split_css$`enCard-content-lv-A2`$remain$`font-family` <- "fantasy"
+enCard$split_css$`enCard-content-lv`$auto_layout$`justify-content` <- "center"
+enCard$split_css$`enCard-content-word-expl`$remain$`line-height` <- "20px"
+enCard$split_css$`enCard-content-teacher-triange`$remain$height <- NULL
+enCard$split_css$`enCard-content-teacher-word`$remain$height <- NULL
+enCard$split_css$`enCard-background-icon`$remain$position <- "relative"
+enCard$split_css$`enCard-background`$auto_layout$padding <- "0px 0px"
+enCard$split_css$`enCard-content-teacher-word`$inside_autoLayout$flex <- "auto"
+
+enCard$update_css()
+
+icon_dependency <- function(){
+  htmltools::htmlDependency(
+    name="icon",
+    version="1",
+    src=c(file=normalizePath("./temp")),
+    attachment = "icon",
+    all_files = T
+  )
+}
+
+enCard$ui(
+  icon_dependency()
+) |> browseTag2()
+```
+
+```{r}
+enCard$export(tagname = "enCard")
+
+
+```

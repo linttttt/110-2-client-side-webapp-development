@@ -1,0 +1,80 @@
+```{r}
+library(rvest)
+library(xml2)
+library(webdriver)
+```
+
+
+```{r}
+rvest::read_html("http://www.econ.ntpu.edu.tw/econ/teachers/") -> htmlTeacher
+
+htmlTeacher |>
+    rvest::html_element("body > table  > tr:nth-child(3) > td > table > tr > td:nth-child(3) > table:nth-child(2) > tr:nth-child(5) > td > table:nth-child(1)") -> .table
+
+.table |>
+    rvest::html_elements("tr") -> trs
+
+list_text1 <- vector("list", length(trs))
+for (.x in seq_along(list_text1)) {
+    trs[[.x]] |>
+    rvest::html_elements("td") |>
+    rvest::html_text() |>
+    stringr::str_remove_all("\t") |>
+    stringr::str_remove_all("\n") |>
+    stringr::str_remove_all("\\s") -> list_text1[[.x]]
+}
+#list_text1 |> View()
+```
+
+```{r}
+rvest::read_html("http://www.econ.ntpu.edu.tw/econ/teachers/index.php?Page=2") -> htmlTeacher
+
+htmlTeacher |>
+    rvest::html_element("body > table  > tr:nth-child(3) > td > table > tr > td:nth-child(3) > table:nth-child(2) > tr:nth-child(5) > td > table:nth-child(1)") -> .table
+
+.table |>
+    rvest::html_elements("tr") -> trs
+
+list_text2 <- vector("list", length(trs))
+for (.x in seq_along(list_text2)) {
+    trs[[.x]] |>
+    rvest::html_elements("td") |>
+    rvest::html_text() |>
+    stringr::str_remove_all("\t") |>
+    stringr::str_remove_all("\n") |>
+    stringr::str_remove_all("\\s") -> list_text2[[.x]]
+}
+#list_text2 |> View()
+```
+
+```{r}
+rvest::read_html("http://www.econ.ntpu.edu.tw/econ/teachers/index.php?Page=3") -> htmlTeacher
+
+htmlTeacher |>
+    rvest::html_element("body > table  > tr:nth-child(3) > td > table > tr > td:nth-child(3) > table:nth-child(2) > tr:nth-child(5) > td > table:nth-child(1)") -> .table
+
+.table |>
+    rvest::html_elements("tr") -> trs
+
+list_text3 <- vector("list", length(trs))
+for (.x in seq_along(list_text3)) {
+    trs[[.x]] |>
+    rvest::html_elements("td") |>
+    rvest::html_text() |>
+    stringr::str_remove_all("\t") |>
+    stringr::str_remove_all("\n") |>
+    stringr::str_remove_all("\\s") -> list_text3[[.x]]
+}
+#list_text3 |> View()
+```
+
+
+
+```{r}
+union(list_text1, list_text2) |>
+  union(list_text3) -> test
+test[[3]] <- remove()
+
+#remove(test)
+```
+
