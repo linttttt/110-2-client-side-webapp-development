@@ -1,0 +1,36 @@
+```{r}
+library(econWeb)
+rf <- create_rfig()
+```
+
+```{r}
+rf$div$englishCard(
+  rf$div$background(
+    rf$div$pic(
+      rf$img$`img-sound`(),
+      rf$img$`img-heart`()
+      )
+  ),
+  rf$div$content(
+    rf$div$`content-teacher`(
+      rf$div$`content-teacher-btn`(),
+      rf$div$`content-teacher-content`("前往
+      VoiceTube 聽 Leila 老師如何應用單字"),
+      rf$img$`img-teacher`()
+    ),
+    rf$div$`content-btn`(
+      rf$div$`content-btn-A2`("A2 初級")
+    ),
+    rf$div$`content-word`(
+      rf$div$`content-word-title`("trick"),
+      rf$div$`content-word-pron`("US /trɪk/       US /trɪk/"),
+      rf$div$`content-word-expl`("adj. 虛弱的
+      ；欺詐的  n. 戲法；竅門
+      ；訣竅；把戲；特技")
+    )
+  )
+) |> browseTag2()
+```
+
+
+

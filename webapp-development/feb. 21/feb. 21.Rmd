@@ -1,0 +1,484 @@
+# Figma to R
+```html
+<style>
+.img-icon1 {
+  /* img-icon1 */
+  
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  
+  border: 1.5px solid #FF9900;
+  
+  
+  /* card-background-icons-2 */
+  
+  position: static;
+  left: 68.63%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  
+  
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 19px;
+  
+  
+}
+.img-icon2 {
+  /* img-icon2 */
+  
+/**  position: absolute;**/
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  
+  border: 2px solid #FF9900;
+  
+  
+  /* card-content */
+  
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px 10px;
+  
+/**  position: absolute;**/
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  
+  
+  
+  /* card-content-word */
+  
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  
+  position: static;
+  width: 266px;
+  height: 124px;
+  left: 10px;
+  top: 19.5px;
+  
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 17px 0px;
+  
+  
+  /* card-content-word-title */
+  
+  position: static;
+  width: 266px;
+  height: 28px;
+  left: 0px;
+  top: 0px;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  
+  color: #FFFFFF;
+  
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 17px 0px;
+  
+  
+  /* card-content-word-pronun */
+  
+  position: static;
+  width: 266px;
+  height: 20px;
+  left: 0px;
+  top: 45px;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  
+  color: #C4C4C4;
+  
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 17px 0px;
+  
+  
+  /* card-content-word-explain */
+  
+  position: static;
+  height: 42px;
+  left: 0%;
+  right: 0%;
+  top: calc(50% - 42px/2 + 41px);
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  
+  color: #FFFFFF;
+  
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 17px 0px;
+  
+  
+  /* card-content-btn */
+  
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 3px;
+  
+  position: static;
+  width: 41px;
+  height: 18px;
+  left: calc(50% - 41px/2 - 112.5px);
+  top: calc(50% - 18px/2 + 32.5px);
+  
+  background: #52B88D;
+  border: 1px solid #6FCF97;
+  box-sizing: border-box;
+  border-radius: 5px;
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 1;
+  flex-grow: 0;
+  margin: 17px 0px;
+  
+  
+  /* card-content-btn-level */
+  
+  position: static;
+  left: 7.32%;
+  right: 7.32%;
+  top: 16.67%;
+  bottom: 16.67%;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  /* identical to box height */
+  
+  color: #FFFFFF;
+  
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+  
+  
+  /* card-content-teacher */
+  
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 9px 24px;
+  
+  position: static;
+  width: 266px;
+  height: 59px;
+  right: 10px;
+  top: calc(50% - 59px/2 + 88px);
+  
+  background: #716B96;
+  border-radius: 9px;
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 17px 0px;
+  
+  
+  /* card-content-teacher-img */
+  
+  position: static;
+  width: 40px;
+  height: 41px;
+  left: 24px;
+  top: 9px;
+  
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 13px;
+  
+  
+  /* card-content-teacher-img-img-teacher */
+  
+/**  position: absolute;**/
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 2.44%;
+  
+  background: url(Checker.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 40px;
+  
+  
+}
+.img-teacher {
+  /* img-teacher */
+  
+/**  position: absolute;**/
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  
+  background: #E9C9A5;
+  border-radius: 40px;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 29.76%;
+  right: 29.88%;
+  top: 63.34%;
+  bottom: 18.2%;
+  
+  background: #457342;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 76.73%;
+  right: 9.1%;
+  top: 52.81%;
+  bottom: 33.02%;
+  
+  background: #9B9B9A;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 68.92%;
+  right: 19.97%;
+  top: 45.26%;
+  bottom: 43.63%;
+  
+  background: #D0CFCE;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 17.29%;
+  right: 15.53%;
+  top: 15.78%;
+  bottom: 29.4%;
+  
+  background: #000000;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 30.56%;
+  right: 29.19%;
+  top: 22.22%;
+  bottom: 20.4%;
+  
+  border: 2px solid #000000;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 22.22%;
+  right: 10.12%;
+  top: 45.83%;
+  bottom: 18.56%;
+  
+  border: 2px solid #000000;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 16.67%;
+  right: 8.41%;
+  top: 16.67%;
+  bottom: 17.89%;
+  
+  border: 2px solid #000000;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 23.25%;
+  right: 23.8%;
+  top: 23.14%;
+  bottom: 18.17%;
+  
+  background: #D0A68B;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 41.56%;
+  right: 41.77%;
+  top: 34.81%;
+  bottom: 48.51%;
+  
+  background: #000000;
+  
+  
+  /* Vector */
+  
+/**  position: absolute;**/
+  left: 68.92%;
+  right: 19.97%;
+  top: 45.26%;
+  bottom: 43.63%;
+  
+  border: 2px solid #000000;
+  
+  
+  /* card-content-teacher-word */
+  
+  position: static;
+  height: 41px;
+  left: 28.95%;
+  right: 9.02%;
+  top: calc(50% - 41px/2);
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  
+  color: #FFFFFF;
+  
+  opacity: 0.5;
+  
+  /* Inside auto layout */
+/**  flex: none;**/
+  order: 1;
+  flex-grow: 1;
+  margin: 0px 13px;
+}
+</style>
+<div class='img-icon1'>
+</div>
+<div class='img-icon2'>
+</div>
+<div class='img-teacher'>
+</div>
+```
+
+```{r}
+tagList(
+tags$style('
+
+'),
+tags$div(class = "img-icon1"),
+tags$div(class = "img-icon2"),
+tags$div(class = "img-teacher")
+) -> tag_element22
+
+tag_element22 |> econWeb::browseTag2()
+
+```
+
+```{r}
+library(htmltools)
+library(econWeb)
+fig <- Fig()
+```
+
+```{r}
+fig$split_innerContent$`card-content-teacher-img` <- tags$img(src="img-teacher.svg")
+
+fig$split_innerContent$`card-background-icons-1` <- tags$img(src="img-icon1.svg")
+
+fig$split_innerContent$`card-background-icons-2` <- tags$img(src="img-icon2.svg")
+
+fig$split_innerContent$`card-content-word-title` = "Trick"
+fig$split_innerContent$`card-content-word-pronun` = "US /trɪk/       US /trɪk/"
+fig$split_innerContent$`card-content-word-explain` = "adj. 虛弱的；欺詐的
+n. 戲法；竅門；訣竅；把戲；特技"
+fig$split_innerContent$`card-content-teacher-word` = "前往VoiceTube 聽 Leila 老師如何應用單字"
+fig$split_innerContent$`card-content-btn-level` = "A2 初級"
+
+fig$update_div()
+```
+
+```{r}
+fig$split_css$`card-content-teacher-word`$remain$width <- "min-content"
+
+fig$split_css$`card-background-icons`$remain$width <- NULL
+fig$split_css$`card-background-icons`$remain$height <- NULL
+
+fig$update_css()
+```
+
+```{r}
+fig |> class()
+fig$ui()
+fig$ui() |>
+    browseTag2()
+```
+
+```{r}
+fig$export(tagname = "card")
+```
+
+### 注意: "xxx.css" 和圖片要放在project(learning~R.Rproj)的位置

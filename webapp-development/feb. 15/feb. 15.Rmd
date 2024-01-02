@@ -1,0 +1,106 @@
+
+```{html}
+<h3>My summer vacation</h3>
+```
+
+```{r}
+install.packages("devtools")
+devtools::install_github("tpemartin/econWeb", force = T)
+```
+
+```{r}
+install.packages(c("htmltools", "shiny", "purrr", "stringr"))
+
+```
+
+```{r}
+
+tags$h3("My summer vacation")
+```
+
+```{r}
+tags$div(
+  tags$h1("John"),
+  tags$p("Age 32")
+  )
+```
+
+```{r}
+mytag <- tags$div(
+  tags$h1("John"),
+  tags$p("Age 32")
+  )
+
+htmltools::save_html(mytag, file = "215shinytag.html")
+file.edit("215shinytag.html")
+browseURL("215shinytag.html")
+```
+
+```{r}
+tags$div(tags$h1("John"),
+ tags$p("Age 32")) -> tag_element
+
+tag_element |> econWeb::browseTag2()
+```
+
+```{r}
+mytag$name
+mytag$children
+```
+
+```{html}
+<img src="https://i.pinimg.com/originals/0c/67/5a/0c675a8e1061478d2b7b21b330093444.gif" width="100%" alt="happy robot">
+```
+
+```{r}
+tags$img(src = "https://i.pinimg.com/originals/0c/67/5a/0c675a8e1061478d2b7b21b330093444.gif",
+ width = "100%",
+ alt = "happy robot") -> tag_element2
+
+tag_element2 |> econWeb::browseTag2()
+
+```
+
+```{r}
+tagList(tags$img(src = "https://i.pinimg.com/originals/0c/67/5a/0c675a8e1061478d2b7b21b330093444.gif",
+    width = "100%", alt = "happy robot"))
+```
+
+```{html}
+<div>Default</div>
+<div style="width: 125px; height: 88px; background: #6FCF97;">With style</div>
+```
+
+```{r}
+tagList(
+tags$div("Default"),
+tags$div(style = "width: 125px; height: 88px; background: #6FCF97;",
+ "With style")
+) -> tag_element3
+
+tag_element3 |> econWeb::browseTag2()
+
+```
+
+```{r}
+mycss <- htmltools::css(width = "125px", height = "88px", background = "#6FCF97")
+tags$div(style = mycss, "With style")
+```
+
+```html
+<div class="foo">A</div>
+<div id="mytarget" class="foo lish">B</div>
+<div class="lish">C</div>
+```
+
+```css
+#mytarget {
+  background-color: red;
+}
+
+.foo {
+  border-style: solid;
+}
+```
+
+

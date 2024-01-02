@@ -1,0 +1,135 @@
+```{r}
+#install.packages("rvest")
+#install.packages("xml2")
+#install.packages("webdriver")
+library(rvest)
+library(xml2)
+library(webdriver)
+```
+
+```js
+#access-tag > ul:nth-child(3) > li:nth-child(2) > p
+```
+
+```{r}
+rvest::read_html("https://tpemartin.github.io/client-side-webapp-development/project-resources-preparation.html") -> html
+
+html |> 
+  rvest::html_element(
+    css="#access-tag > ul:nth-child(3) > li:nth-child(2) > p"
+  ) -> targetElenment
+targetElenment
+```
+
+```{r}
+targetElenment |>
+  rvest::html_text()
+```
+
+#restaurant-listing-root > div > div.rlp-content > div > main > div.organic-list > section > ul > li:nth-child(15)
+
+```{r}
+rvest::read_html("https://www.foodpanda.com.tw/restaurants/new?lat=25.062105023942525&lng=121.4563929230457&vertical=restaurants") -> html2
+
+html2 |> 
+  rvest::html_elements(
+    css=".vendor-tile.item"
+  ) -> targetElenment2 #有問題
+```
+
+```{r}
+rvest::read_html("https://www.dcard.tw/f/ntpu?latest=true") -> html3
+
+html3 |> 
+  rvest::html_elements(
+    css="article"
+  ) -> list_article
+
+list_article[[1]] |>
+  rvest::html_text()
+
+list_article[[1]] |>
+  rvest::html_text2()
+```
+
+```{r}
+"http://www.econ.ntpu.edu.tw/econ/teachers/" |> browseURL()
+
+# read html
+rvest::read_html("http://www.econ.ntpu.edu.tw/econ/teachers/") -> html4
+
+html4 |>
+    rvest::html_element("body > table  > tr:nth-child(3) > td > table  > tr > td:nth-child(3) > table:nth-child(2)  > tr:nth-child(5) > td > table:nth-child(1)") -> .table
+
+.table |>
+    rvest::html_elements("tr") -> trs
+
+# try extract one row information
+trs[[2]] |>
+    rvest::html_elements("td") |>
+    rvest::html_text()
+
+# for loop
+list_text <- vector("list", length(trs))
+for (.x in seq_along(list_text)) {
+    trs[[.x]] |>
+        rvest::html_elements("td") |>
+        rvest::html_text() -> list_text[[.x]]
+}
+list_text |>
+    View()
+```
+
+```{r}
+webdriver::install_phantomjs()
+# initiate Phantom browser
+phantom_browse <- run_phantomjs()
+# start a new web crawling session with html content coming
+# from Phantom browser
+pjs_session <- Session$new(port = phantom_browse$port)
+```
+
+```{r}
+url = "http://sea.cc.ntpu.edu.tw/pls/dev_stud/course_query_all.query_frame?flag=1"
+pjs_session$go(url)
+# check sandbox website look
+pjs_session$takeScreenshot()
+```
+
+```{r}
+# mimic choosing 經濟系
+pjs_session$executeScript("
+/* 取得課程查詢條件區塊 （此為embedded document) */
+var target_frame=document.querySelector(\"html > frameset > frame:nth-child(2)\");
+
+/* 取出embedded document的document內容 */
+var target_content=target_frame.contentDocument;
+
+/* 更動條件值 */
+target_content.form1.qEdu[1].checked=true; //勾選大學部
+target_content.bill.qdept.value=\"LU04\"; //選擇\"經濟系\"
+
+/* 送出條件 */
+target_content.bill.submit();
+")
+# check if get the result frame
+pjs_session$takeScreenshot()
+```
+
+```{r}
+target_content = pjs_session$executeScript("
+/* 取得課程查詢條件區塊 （此為embedded document) */
+var target_frame=document.querySelector(\"html > frameset > frame:nth-child(2)\");
+/* 取出embedded document的document內容 */
+var target_content=target_frame.contentDocument;
+
+table=target_content.getElementsByTagName(\"table\")[0];
+return table.outerHTML;
+")
+```
+
+
+```{r}
+Sys.getenv("PATH")
+```
+

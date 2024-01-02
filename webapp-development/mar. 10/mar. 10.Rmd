@@ -1,0 +1,55 @@
+```{r}
+Sys.getenv("PATH")
+```
+
+```{r}
+library(processx)
+p <- processx::process$new("chromedriver")
+p$kill()
+```
+
+```{r}
+session = webdriver::Session$new(port = 9515)
+```
+
+```{r}
+url = "http://sea.cc.ntpu.edu.tw/pls/dev_stud/course_query_all.query_frame?flag=1"
+session$go(url)
+```
+
+```{r}
+# mimic choosing 經濟系
+session$executeScript("
+/* 取得課程查詢條件區塊 （此為embedded document) */
+var target_frame=document.querySelector(\"html > frameset > frame:nth-child(2)\");
+
+/* 取出embedded document的document內容 */
+var target_content=target_frame.contentDocument;
+
+/* 更動條件值 */
+target_content.form1.qEdu[1].checked=true; //勾選大學部
+target_content.bill.qdept.value=\"LU04\"; //選擇\"經濟系\"
+
+/* 送出條件 */
+target_content.bill.submit();
+")
+
+```
+
+```{r}
+session$goBack()
+session$findElement(css = "body > center > table > tbody > tr > td > table > tbody > tr:nth-child(1) > td > fieldset > form:nth-child(2) > input[type=radio]:nth-child(4)")#碩博士班
+```
+
+```{r}
+session$go("https://www.foodpanda.com.tw/?gclid=CjwKCAiAprGRBhBgEiwANJEY7EyfdzLJzfbV09WlU12trT98jq4KhKyLVlX5HuozssJlMH_zdcRfSBoCDDcQAvD_BwE")
+
+#輸入地址
+input = session$findElement(css = "#delivery-information-postal-index")
+input$setValue("三峽區大學路151號")
+#按下確認發送
+delivery = session$findElement(css = "#delivery-information-postal-index-form > div.button-container.two-buttons > button.button.restaurants-search-form__button.js-restaurants-search-submit.restaurants-search-form__button--full.js-restaurants-search-button.gtm-homepage-delivery-button.restaurants-search-form__button--flexible.js-ripple")
+
+delivery$click()
+```
+

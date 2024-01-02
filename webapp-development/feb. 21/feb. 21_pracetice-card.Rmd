@@ -1,0 +1,45 @@
+```{r}
+figEx <- Fig()
+```
+
+```{r}
+figEx$split_innerContent$`englishCard-content-teacher-img` <- tags$img(src="img-teacher1.svg")
+
+figEx$split_innerContent$`englishCard-content-teacher-triange` <- tags$img(src="img-triangle.svg")
+
+figEx$split_innerContent$`englishCard-background-pic-icon1` <- tags$img(src="img-heart.svg")
+figEx$split_innerContent$`englishCard-background-pic-icon2` <- tags$img(src="img-sound.svg")
+
+figEx$update_div()
+```
+
+```{r}
+figEx$split_innerContent$`englishCard-content-word-title` = "Trick"
+figEx$split_innerContent$`englishCard-content-word-pron` = "US /trɪk/       US /trɪk/"
+figEx$split_innerContent$`englishCard-content-word-expl` = "adj. 虛弱的；欺詐的
+n. 戲法；竅門；訣竅；把戲；特技"
+figEx$split_innerContent$`englishCard-content-teacher-word` = "前往VoiceTube 聽 Leila 老師如何應用單字"
+figEx$split_innerContent$`englishCard-content-btn-A2` = "A2 初級"
+
+figEx$update_div()
+```
+
+```{r}
+figEx$split_css$`card-content-teacher-word`$remain$width <- "min-content"
+
+figEx$split_css$`card-background-icons`$remain$width <- NULL
+figEx$split_css$`card-background-icons`$remain$height <- NULL
+
+figEx$update_css()
+```
+
+```{r}
+figEx |> class()
+figEx$ui()
+figEx$ui() |>
+    browseTag2()
+```
+
+```{r}
+fig$export(tagname = "englishcard")
+```

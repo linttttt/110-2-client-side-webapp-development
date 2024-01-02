@@ -1,0 +1,12 @@
+```{r}
+session = econWeb::webdriverChromeSession()
+# start your chromedriver session
+session$start_session()
+```
+
+```{r}
+session$go("https://foodpanda.com.tw")
+session$delete()
+session$kill_chrome()
+```
+

@@ -1,0 +1,109 @@
+```{r}
+tagList(
+  tags$style(".class1 {background-color: blue; color: white;}"),
+  tags$div("Hi", tags$div(class = "class1", "How are you?"))
+  ) |>
+    browseTag2()
+```
+
+```{r}
+".class1 {background-color: blue; color: white;}" |>
+    xfun::write_utf8("temp/mystyle.css")  # create the file
+
+file.edit("temp/mystyle.css")
+```
+
+```{r}
+tagList(
+  tags$link(href = "mystyle.css", rel = "stylesheet"),
+  tags$div("Hi", tags$div(class = "class1", "How are you?"))
+  ) |>
+    browseTag2()
+```
+
+# html dependency
+
+```{r}
+mycss_dependency <- htmltools::htmlDependency(
+  name = "mycss",
+  version = "1",
+  src = c(file = normalizePath("./temp")),
+  style = "mystyle.css",
+  all_files = F)
+```
+
+```{r}
+class(mycss_dependency)
+```
+
+```{r}
+tagList(mycss_dependency, tags$div("Hi", tags$div(class = "class1",
+    "How are you?"))) |>
+    browseTag2()
+```
+
+# tag functions
+
+```{r}
+tagfun1 <- function(sentence1, sentence2) {
+    tags$div(sentence1, tags$div(class = "class1", sentence2)) -> tagx
+  return(tagList(tagx, mycss_dependency))
+}
+
+# return在最後可不加
+```
+
+```{r}
+tagfun1("Fine", "Thanks") |> browseTag2()
+```
+
+```{r}
+tagfun2 <- function(sentence1, sentence2, dependencies) {
+    tags$div(sentence1, tags$div(class = "class1", sentence2)) -> tagx
+    tagList(tagx, dependencies)
+}
+```
+
+```{r}
+tagfun2("Hi~", "How are you?", mycss_dependency) |>
+    browseTag2()
+```
+
+```{r}
+tagfun3 <- function(sentence1, sentence2) {
+    tags$div(sentence1, tags$div(class = "class1", sentence2)) -> tagx
+    tagList(tagx, mycss_dependency())
+}
+mycss_dependency <- function() {
+    htmltools::htmlDependency(
+      name = "mycss",
+      version = "1",
+      src = c(file = normalizePath("./temp")),
+      style = "mystyle.css",
+        all_files = F)
+}
+```
+
+```{r}
+tagfun3("Hi !", "How are you?") |>
+    browseTag2()
+```
+
+```{r}
+tagfun4 <- function(sentence1, sentence2, ...) {
+    tags$div(sentence1, ...,  tags$div(class = "class1", sentence2)) -> tagx
+    tagList(tagx, mycss_dependency())
+}
+mycss_dependency <- function() {
+    tags$style(".class1 {background-color: blue; color: white;}")
+}
+```
+
+```{r}
+tagfun4("Hi", "How are you?", style = "color: red;") |>
+    browseTag2()
+
+tagfun4("Hi", "How are you?", style = "width: 100px;") |>
+    browseTag2()
+```
+
